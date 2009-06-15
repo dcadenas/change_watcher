@@ -1,6 +1,41 @@
 = change_watcher
 
-Description goes here.
+A gem to keep track of data changes
+
+  require "rubygems"
+  require "change_watcher"
+
+  change_watcher = ChangeWatcher.new do
+    data_to_watch do
+      #scrape some interesting data from the web (account balance, ranking of something, prices, etc.), from the filesystem, or get it from any other data source
+      BankAccount.new(username, password).balance
+    end
+
+    on_change do |old, new|
+      #notify yourself with an email, growl, etc. about the change, or do any other interesting stuff
+      require 'gmail_sender'
+
+      g = GmailSender.new("gmail_account_user_name", "gmail_account_password")
+      g.send("someone@domain.com", "More money yay!!", "It was $#{old} and now it is $#{new}!!!!!") if new > old
+      g.send("someone@domain.com", "Less money, ouch", "It was $#{old} but now it is $#{new} :(" if new < old
+    end
+
+    #this gets the path for the yml file where all the changes will be stored or some object implementing a store interface (e.g. a database)
+    store_changes_in "/Users/daniel/.foobar_changes.yml"
+  end
+
+  #loop or create a script to call from cron
+  change_watcher.check_for_change
+
+There's also an optional +define_change+:: method you can use if you consider that +old != new+:: does not cover the concept of change. See the tests for more details.
+
+== Installation
+
+  sudo gem install dcadenas-change_watcher
+
+== Collaborate
+
+http://github.com/dcadenas/change_watcher
 
 == Copyright
 
