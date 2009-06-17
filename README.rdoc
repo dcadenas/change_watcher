@@ -27,7 +27,7 @@ A gem to keep track of data changes
   #loop or create a script to call from cron
   change_watcher.check_for_change
 
-There's also an optional +define_change+:: method you can use if you consider that +old != new+:: does not cover the concept of change. See the tests for more details.
+There's also an optional define_change method you can use if you consider that old != new does not cover the concept of change. See the tests for more details.
 
 == Installation
 
