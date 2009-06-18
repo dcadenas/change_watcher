@@ -15,7 +15,7 @@ class ChangeWatcher
     end
 
     def save(value)
-      File.open( @path_to_yaml_file, 'w' ) do |out|
+      File.open( @path_to_yaml_file, 'a' ) do |out|
         YAML.dump( [Time.now, value], out )
       end
     end

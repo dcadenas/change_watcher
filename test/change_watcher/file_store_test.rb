@@ -49,4 +49,15 @@ Expectations do
       file_store.latest_value
     end
   end
+
+  expect true do
+    with_files do
+      file_store = ChangeWatcher::FileStore.new("store.yml")
+      file_store.save(12345678)
+      file_store.save(87654321)
+
+      file_content = File.read("store.yml")
+      !!(file_content =~ /12345678/ && file_content =~ /87654321/)
+    end
+  end
 end
