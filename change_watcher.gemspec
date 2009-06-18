@@ -2,10 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{change_watcher}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
+
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Daniel Cadenas"]
-  s.date = %q{2009-06-17}
+  s.date = %q{2009-06-18}
   s.email = %q{dcadenas@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -21,7 +22,6 @@ Gem::Specification.new do |s|
      "change_watcher.gemspec",
      "lib/change_watcher.rb",
      "lib/change_watcher/file_store.rb",
-     "lib/change_watcher/store.rb",
      "test/change_watcher/file_store_test.rb",
      "test/change_watcher_test.rb",
      "test/test_helper.rb"
